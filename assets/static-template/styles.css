@@ -1,0 +1,292 @@
+/* ===== 中学教材サイト 共通スタイル ===== */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-light: #dbeafe;
+  --color-accent: #f59e0b;
+  --color-accent-light: #fef3c7;
+  --color-success: #16a34a;
+  --color-success-light: #dcfce7;
+  --color-danger: #dc2626;
+  --color-danger-light: #fee2e2;
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --font-main: "Noto Sans JP", "Hiragino Sans", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.8;
+}
+
+/* ---------- レイアウト ---------- */
+.site-header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-header .logo { font-size: 1.25rem; font-weight: 700; }
+.site-header nav a { color: #fff; text-decoration: none; margin-left: 16px; font-size: .9rem; }
+.site-header nav a:hover { text-decoration: underline; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 56px);
+}
+
+/* サイドナビ */
+.side-nav {
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  padding: 20px 0;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+.side-nav a {
+  display: block;
+  padding: 8px 20px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: .9rem;
+  border-left: 3px solid transparent;
+}
+.side-nav a:hover,
+.side-nav a.active {
+  background: var(--color-primary-light);
+  border-left-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.side-nav .nav-heading {
+  padding: 12px 20px 4px;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* メインコンテンツ */
+.main-content { padding: 24px 32px 60px; max-width: 860px; }
+
+/* パンくず */
+.breadcrumb {
+  font-size: .85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--color-primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep::before { content: "/"; }
+
+/* フッター */
+.site-footer {
+  background: var(--color-text);
+  color: #cbd5e1;
+  text-align: center;
+  padding: 20px;
+  font-size: .8rem;
+}
+
+/* ---------- 教材セクション ---------- */
+.section-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.section-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* 導入 */
+.intro-box {
+  background: var(--color-primary-light);
+  border-left: 4px solid var(--color-primary);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 16px;
+}
+
+/* 要点まとめ */
+.key-points {
+  background: var(--color-accent-light);
+  border-left: 4px solid var(--color-accent);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.key-points ul { padding-left: 1.2em; }
+.key-points li { margin-bottom: 6px; }
+
+/* 注意喚起 */
+.notice {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  margin: 16px 0;
+  font-size: .9rem;
+}
+.notice--tip  { background: var(--color-success-light); border-left: 4px solid var(--color-success); }
+.notice--warn { background: var(--color-accent-light);  border-left: 4px solid var(--color-accent);  }
+.notice--danger { background: var(--color-danger-light); border-left: 4px solid var(--color-danger); }
+.notice-label { font-weight: 700; margin-right: 6px; }
+
+/* 例題 */
+.example-block {
+  background: #f1f5f9;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 12px 0;
+}
+.example-block .label {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: .8rem;
+  margin-bottom: 8px;
+}
+
+/* 解説（折りたたみ） */
+.explanation-toggle {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: .9rem;
+  margin-top: 8px;
+}
+.explanation-toggle:hover { opacity: .85; }
+.explanation-body {
+  display: none;
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--color-primary-light);
+  border-radius: var(--radius);
+}
+.explanation-body.open { display: block; }
+
+/* ---------- 練習問題 ---------- */
+.quiz-area { margin-top: 12px; }
+.quiz-question {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.quiz-question .q-number {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+/* 選択肢 */
+.choices { list-style: none; padding: 0; }
+.choices li {
+  padding: 8px 12px;
+  margin: 4px 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background .15s;
+}
+.choices li:hover { background: var(--color-primary-light); }
+.choices li.selected { border-color: var(--color-primary); background: var(--color-primary-light); }
+.choices li.correct  { border-color: var(--color-success); background: var(--color-success-light); }
+.choices li.wrong    { border-color: var(--color-danger);  background: var(--color-danger-light);  }
+
+/* 穴埋め */
+.fill-blank {
+  border: none;
+  border-bottom: 2px dashed var(--color-primary);
+  background: transparent;
+  font-size: 1rem;
+  padding: 2px 8px;
+  width: 140px;
+  text-align: center;
+  font-family: inherit;
+}
+.fill-blank:focus { outline: none; border-bottom-style: solid; }
+
+/* 判定ボタン */
+.btn-check {
+  background: var(--color-success);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: .9rem;
+  margin-top: 8px;
+}
+.btn-check:hover { opacity: .85; }
+
+/* フィードバック */
+.feedback {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: .9rem;
+  display: none;
+}
+.feedback.show { display: block; }
+.feedback--correct { background: var(--color-success-light); color: var(--color-success); }
+.feedback--wrong   { background: var(--color-danger-light);  color: var(--color-danger);  }
+
+/* 段階表示 */
+.step-indicator {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.step-indicator .step {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: .8rem;
+  background: var(--color-border);
+  color: var(--color-text-muted);
+}
+.step-indicator .step.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+.step-indicator .step.done {
+  background: var(--color-success);
+  color: #fff;
+}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .side-nav { display: none; }
+  .main-content { padding: 16px; }
+}

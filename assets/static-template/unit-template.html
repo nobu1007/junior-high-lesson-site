@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{UNIT_TITLE}} | {{SITE_TITLE}}</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <span class="logo">{{SITE_TITLE}}</span>
+  <nav>
+    <!-- {{NAV_LINKS}} -->
+    <a href="index.html">ホーム</a>
+    <a href="#">{{SUBJECT}}一覧</a>
+  </nav>
+</header>
+
+<div class="layout">
+
+  <!-- ===== サイドナビ ===== -->
+  <aside class="side-nav">
+    <div class="nav-heading">{{SUBJECT}}</div>
+    <!-- {{SIDE_NAV_ITEMS}} -->
+    <a href="#" class="active">{{UNIT_TITLE}}</a>
+  </aside>
+
+  <!-- ===== メインコンテンツ ===== -->
+  <main class="main-content">
+
+    <!-- パンくず -->
+    <div class="breadcrumb">
+      <a href="index.html">ホーム</a><span class="sep"></span>
+      <a href="#">{{SUBJECT}}</a><span class="sep"></span>
+      <span>{{UNIT_TITLE}}</span>
+    </div>
+
+    <!-- 段階表示 -->
+    <div class="step-indicator">
+      <span class="step active">導入</span>
+      <span class="step">要点</span>
+      <span class="step">例題</span>
+      <span class="step">練習問題</span>
+    </div>
+
+    <!-- ───── 1. 導入 ───── -->
+    <section class="section-card" id="intro">
+      <h2>導入 — {{UNIT_TITLE}}</h2>
+      <div class="intro-box">
+        <p>{{INTRO_TEXT}}</p>
+        <!-- ここに図や画像を入れてもOK -->
+      </div>
+    </section>
+
+    <!-- ───── 2. 要点まとめ ───── -->
+    <section class="section-card" id="keypoints">
+      <h2>要点まとめ</h2>
+      <div class="key-points">
+        <ul>
+          <li>{{KEY_POINT_1}}</li>
+          <li>{{KEY_POINT_2}}</li>
+          <li>{{KEY_POINT_3}}</li>
+          <!-- {{MORE_KEY_POINTS}} -->
+        </ul>
+      </div>
+      <div class="notice notice--tip">
+        <span class="notice-label">ポイント</span>
+        {{TIP_TEXT}}
+      </div>
+    </section>
+
+    <!-- ───── 3. 例題 ───── -->
+    <section class="section-card" id="example">
+      <h2>例題</h2>
+      <div class="example-block">
+        <span class="label">例題 1</span>
+        <p>{{EXAMPLE_QUESTION}}</p>
+      </div>
+      <button class="explanation-toggle">解説を見る</button>
+      <div class="explanation-body">
+        <p>{{EXAMPLE_EXPLANATION}}</p>
+      </div>
+    </section>
+
+    <!-- ───── 4. 練習問題 ───── -->
+    <section class="section-card" id="quiz">
+      <h2>練習問題</h2>
+      <div class="quiz-area">
+
+        <!-- 選択式 -->
+        <div class="quiz-question" data-type="choice">
+          <div class="q-number">問1</div>
+          <p>{{QUIZ_CHOICE_QUESTION}}</p>
+          <ul class="choices">
+            <li data-correct="false">{{CHOICE_A}}</li>
+            <li data-correct="true" data-msg-correct="正解！{{CHOICE_CORRECT_MSG}}" data-msg-wrong="">{{CHOICE_B}}</li>
+            <li data-correct="false">{{CHOICE_C}}</li>
+            <li data-correct="false">{{CHOICE_D}}</li>
+          </ul>
+          <button class="btn-check">こたえあわせ</button>
+          <div class="feedback"></div>
+        </div>
+
+        <!-- 穴埋め式 -->
+        <div class="quiz-question" data-type="fill">
+          <div class="q-number">問2</div>
+          <p>
+            {{FILL_SENTENCE_BEFORE}}
+            <input class="fill-blank" type="text" data-answer="{{FILL_ANSWER}}" placeholder="答えを入力" />
+            {{FILL_SENTENCE_AFTER}}
+          </p>
+          <button class="btn-check">こたえあわせ</button>
+          <div class="feedback"></div>
+        </div>
+
+      </div>
+
+      <!-- 解説 -->
+      <button class="explanation-toggle">練習問題の解説を見る</button>
+      <div class="explanation-body">
+        <p>{{QUIZ_EXPLANATION}}</p>
+      </div>
+    </section>
+
+    <!-- ───── 5. まとめ・次のステップ ───── -->
+    <section class="section-card" id="summary">
+      <h2>まとめ</h2>
+      <p>{{SUMMARY_TEXT}}</p>
+      <div class="notice notice--tip">
+        <span class="notice-label">次の単元</span>
+        <a href="{{NEXT_UNIT_URL}}">{{NEXT_UNIT_TITLE}}</a> に進もう！
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ===== フッター ===== -->
+<footer class="site-footer">
+  &copy; {{YEAR}} {{SITE_TITLE}} — 中学{{GRADE}}年 {{SUBJECT}} 学習サイト
+</footer>
+
+<script src="quiz.js"></script>
+</body>
+</html>

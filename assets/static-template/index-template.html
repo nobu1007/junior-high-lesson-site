@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{SITE_TITLE}}</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">{{SITE_TITLE}}</span>
+  <nav>
+    <a href="index.html">ホーム</a>
+  </nav>
+</header>
+
+<div class="layout">
+  <aside class="side-nav">
+    <div class="nav-heading">単元一覧</div>
+    <!-- {{SIDE_NAV_ITEMS}} -->
+  </aside>
+
+  <main class="main-content">
+    <h1>{{SITE_TITLE}}</h1>
+    <p>{{SITE_DESCRIPTION}}</p>
+
+    <section class="section-card">
+      <h2>単元一覧</h2>
+      <ul>
+        <!-- {{UNIT_LIST}} -->
+      </ul>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  &copy; {{YEAR}} {{SITE_TITLE}} — 中学{{GRADE}}年 {{SUBJECT}} 学習サイト
+</footer>
+
+</body>
+</html>
